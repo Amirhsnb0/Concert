@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title%} 
+زمان برگزاری کنسرت
+{% endblock%}
+
+{% block content %} 
+
+    {% if time_Model %}
+        {% for time in time_Model %}
+                <div class="col-md-2">
+                        <div class="imageBox">
+                            <img src="{{ time.concertModel.Poster.url }}">
+                            <h2> {{time.concertModel.Name}} </h2>
+                            <p>{{time.locationModel.Name}} </p>
+                            <p> {{time.jalali_date}} </p>
+                            <p 
+                            class="
+                            {% if time.status == time.start %}
+                                btn btn-success
+                            {% elif time.status == time.end %}
+                                btn btn-danger
+                            {% elif time.status == time.cancle %}
+                                btn btn-secondary
+                            {% elif time.status == time.sales %}
+                                btn btn-dark
+                            {% endif %} " > 
+                            {{time.get_status_display}}</p>
+                        </div>
+                </div >
+            {% endfor %}
+        {% endif %}
+{% endblock%}

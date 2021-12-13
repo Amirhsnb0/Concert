@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title%} 
+پروفایل
+{% endblock%}
+{% block content %} 
+<div class="row" style="margin-top: 20px;">
+      
+    <div class="col-md-9">
+        <div >
+            <p class="border"> <span class="title">نام و نام خانوادگی: </span> {{ profile.user.get_full_name }} </p>
+            <p class="border"> <span class="title">جنسیت: </span> {{ profile.get_status_display }}</p>
+            <p class="border"><span class="title">مقدار اعتبار: </span> {{ profile.credit}}</p>
+            <ul class="btnul">
+                <li><a class="btn btn-primary" href="/accounts/profileEdit"> ویرایش پروفایل</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-3" dir="ltr">
+            <img src="{{ profile.Profleimage.url }}" style="width:100%;height:auto">
+    </div>
+
+</div>
+{% endblock%}

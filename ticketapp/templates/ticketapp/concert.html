@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title%} 
+لیست کنسرت ها
+{% endblock%}
+{% block content %} 
+
+{% if concert_Model %}
+<form action="" method="GET">
+{{searchform}}
+<button type="submit" class="bg-success">جستوجو </button>
+</form>
+    {% for concert in concert_Model %}
+
+            <div class="col-md-2">
+                <a href="{% url 'ticketapp:detail_concert_view' concert.id %}">
+                    <div class="imageBox">
+                        <img src="{{ concert.Poster.url }}">
+                        {{ concert  }}
+                        
+                    </div>
+                </a>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+{% endblock%}
+
+

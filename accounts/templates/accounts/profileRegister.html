@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title%} 
+ساخت اکانت
+{% endblock%}
+{% block content %} 
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  
+    <div class="mainborder">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mylable">نام: {{ formData.first_name }}</p>
+                <p class="mylable">نام خانوادگی: {{ formData.last_name }}</p>
+                <p class="mylable">جنسیت: {{ formData.status}}</p>
+                <p class="mylable">اعتبار: {{ formData.credit }}</p>
+              
+              
+            </div>
+            <div  class="col-md-6">
+                <p class="mylable">ایمیل: {{ formData.email }}</p>
+                <p class="mylable">یوزرنیم: {{ formData.username }}</p>
+                <p class="mylable">پسورد: {{ formData.password }}</p>
+                {{ formData.profileImage }}
+            </div>
+        </div>
+    </div>
+    <div class="bottonborder">
+        <button type="submit" class="btn btn-success">ثبت نام</button>
+    </div>
+</form>
+
+{% endblock%}
+

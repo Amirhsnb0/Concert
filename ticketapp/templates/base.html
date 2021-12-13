@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> سامانه فروش بلیط اینترنتی</title>
+    {% load static %}
+    <link rel="stylesheet" type ="text/css" href="{% static 'ticketapp/css/bootstrap.css'%}">
+    <link rel="stylesheet" type ="text/css" href="{% static 'ticketapp/css/fontawesome.css'%}">
+    <link rel="stylesheet" type ="text/css" href="{% static 'ticketapp/css/style.css'%}">
+</head>
+
+
+
+<body><div class="container">
+    <div class="row box">
+       
+        <h1>{% block title %}   {% endblock %}</h1>
+        <ul class="btnul">
+            
+            {% if user.is_authenticated %}
+                <li><a class="btn btn-success" href="{% url 'accounts:profile_account' %}">پروفایل</a></li>
+                <li><a class="btn btn-danger" href="{% url 'accounts:logout_account' %}">خروج</a></li>
+
+            {% else %}
+                <li><a class="btn btn-success" href="{% url 'accounts:login_account' %}">ورود</a></li>
+                <li><a class="btn btn-danger" href="{% url 'accounts:create_account' %}">ثبت نام</a></li>
+            {% endif %} 
+            
+           
+            
+            <li><a class="btn btn-primary" href="{% url 'ticketapp:time_concert_view' %}"> مشاهده سانس های کنسرت</a></li>
+            <li><a class="btn default" href="{% url 'ticketapp:concert_view' %}">صفحه اصلی</a></li>
+            <li><a class="btn btn-danger"  href="{% url 'ticketapp:location_concert_view' %}">اطلاعات محل</a></li>
+        </ul>
+    </div>
+  
+    <div class="row">
+        
+        {% block content %}{% endblock %}
+       
+    </div>
+</div>
+
+
+
+
+    
+    
+</body>
+<script src="{% static 'ticketapp/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'ticketapp/js/fontawesome.js' %}"></script>
+<script src="{% static 'ticketapp/js/jquery-3.6.0.min.js '%}"></script>
+<script src="{% static 'ticketapp/js/main.js' %}"></script>
+</html>
